@@ -9,7 +9,7 @@ export default function TaskManager() {
   return (
     <TaskManagerContainer>
       <AddTaskForm tarefasState={tarefasState} setTarefasState={setTarefasState} />
-      <TaskList tarefasState={tarefasState} />
+      <TaskList tarefasState={tarefasState} setTarefasState={setTarefasState} />
     </TaskManagerContainer>
   );
 }

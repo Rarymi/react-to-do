@@ -5,18 +5,23 @@ export default function TaskForm({ setTarefasState, tarefasState }) {
   const [inputState, setInputState] = useState('');
 
   function onInputChange(event) {
-    setInputState(event.target.value);
+    const valorAtualDoInput = event.target.value;
+    setInputState(valorAtualDoInput);
+  }
+
+  function generateId() {
+    return `TS-${parseInt(Math.random() * (999 - 1) + 1)}`;
   }
 
   async function adicionaItemNaLista() {
-    setTarefasState([...tarefasState, { id: tarefasState.length, titulo: inputState, detalhes: '', realizada: false }]);
-
+    if (inputState === '') return;
+    setTarefasState([...tarefasState, { id: generateId(), titulo: inputState, detalhes: '', realizada: false }]);
     setInputState('');
   }
 
   return (
     <TaskFormContainer>
-      <input type='text' value={inputState} onChange={onInputChange}></input>
+      <input type='text' value={inputState} onChange={onInputChange} />
       <button onClick={adicionaItemNaLista}>Adicionar</button>
     </TaskFormContainer>
   );

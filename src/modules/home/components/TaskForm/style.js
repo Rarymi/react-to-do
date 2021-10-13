@@ -22,6 +22,7 @@ export const TaskFormContainer = styled.div`
     border-radius: 5px;
     margin-left: 13px;
     font-size: 17px;
+    cursor: pointer;
 
     &:hover {
       background-color: var(--primary-450);
