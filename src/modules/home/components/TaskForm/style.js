@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
-export const AddTaskContainer = styled.main`
+export const TaskFormContainer = styled.div`
+  display: flex;
+  width: 100%;
+
   input {
     background-color: var(--primary-150);
-    width: 680px;
-    height: 25px;
+    width: 100%;
     border-radius: 5px;
     color: var(--primary-050);
     border: 1px solid var(--primary-050);

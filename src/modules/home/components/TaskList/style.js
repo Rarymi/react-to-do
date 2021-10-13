@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TasksContainer = styled.main`
+export const TaskListContainer = styled.div`
   border-radius: 50px;
 
   h1 {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { AddTaskContainer } from './style';
+import { TaskFormContainer } from './style';
 
-export default function AddTask({ setTarefasState, tarefasState }) {
+export default function TaskForm({ setTarefasState, tarefasState }) {
   const [inputState, setInputState] = useState('');
 
   function onInputChange(event) {
@@ -15,11 +15,9 @@ export default function AddTask({ setTarefasState, tarefasState }) {
   }
 
   return (
-    <AddTaskContainer>
+    <TaskFormContainer>
       <input type='text' value={inputState} onChange={onInputChange}></input>
       <button onClick={adicionaItemNaLista}>Adicionar</button>
-
-      <img src='../../images/undraw_Up_to_date_re_nqid.svg' alt='' />
-    </AddTaskContainer>
+    </TaskFormContainer>
   );
 }

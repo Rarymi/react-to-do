@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { TasksContainer } from './style';
+import { TaskListContainer } from './style';
 
-export default function Tasks({ tarefasState }) {
+export default function TaskList({ tarefasState }) {
   const [isCompleted, setIsCompleted] = useState(false);
 
   return (
-    <TasksContainer>
+    <TaskListContainer>
       {tarefasState.map((tarefa) => (
         <div>
           <h1 onClick={() => setIsCompleted(!isCompleted)} style={{ borderLeft: isCompleted ? '6px solid  red' : '' }}>
@@ -14,6 +14,6 @@ export default function Tasks({ tarefasState }) {
           </h1>
         </div>
       ))}
-    </TasksContainer>
+    </TaskListContainer>
   );
 }
