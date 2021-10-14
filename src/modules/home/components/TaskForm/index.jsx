@@ -21,8 +21,13 @@ export default function TaskForm({ setTarefasState, tarefasState }) {
 
   return (
     <TaskFormContainer>
-      <input type='text' value={inputState} onChange={onInputChange} />
-      <button onClick={adicionaItemNaLista}>Adicionar</button>
+      <h4 className='form-title'>Tasks</h4>
+      <div className='form-wrapper'>
+        <input type='text' value={inputState} onChange={onInputChange} />
+        <button onClick={adicionaItemNaLista}>
+          <strong>Adicionar</strong>
+        </button>
+      </div>
     </TaskFormContainer>
   );
 }

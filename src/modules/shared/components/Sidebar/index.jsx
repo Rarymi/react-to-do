@@ -1,5 +1,11 @@
-import { SidebarContainer } from './style';
+import { ConcludedContainer, OverdueContainer, ProgressContainer, SidebarContainer } from './style';
 
 export default function Sidebar() {
-  return <SidebarContainer>I'm the sidebar</SidebarContainer>;
+  return (
+    <SidebarContainer>
+      <OverdueContainer>Overdue</OverdueContainer>
+      <ProgressContainer>In Progress</ProgressContainer>
+      <ConcludedContainer>Concluded</ConcludedContainer>
+    </SidebarContainer>
+  );
 }

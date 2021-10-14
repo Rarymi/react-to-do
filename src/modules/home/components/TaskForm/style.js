@@ -3,6 +3,18 @@ import styled from 'styled-components';
 export const TaskFormContainer = styled.div`
   display: flex;
   width: 100%;
+  flex-direction: column;
+
+  .form-title {
+    margin: 0;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: var(--base-color-200);
+  }
+
+  .form-wrapper {
+    display: flex;
+  }
 
   input {
     background-color: var(--primary-150);
@@ -15,7 +27,7 @@ export const TaskFormContainer = styled.div`
 
   button {
     background-color: var(--primary-150);
-    color: var(--primary-050);
+    color: var(--base-color-300);
     width: 180px;
     height: 32px;
     border: 1px solid var(--primary-050);
