@@ -1,21 +1,24 @@
-import { useState } from 'react';
+import TaskService from 'modules/home/services/TaskService';
+import { TasksContext } from 'modules/shared/contexts/TasksContext';
+import { useContext, useState } from 'react';
 import { TaskFormContainer } from './style';
 
-export default function TaskForm({ setTarefasState, tarefasState }) {
+export default function TaskForm() {
   const [inputState, setInputState] = useState('');
+  const { tasks, setTasks } = useContext(TasksContext);
 
   function onInputChange(event) {
-    const valorAtualDoInput = event.target.value;
-    setInputState(valorAtualDoInput);
+    setInputState(event.target.value);
   }
 
-  function generateId() {
-    return `TS-${parseInt(Math.random() * (999 - 1) + 1)}`;
-  }
-
-  async function adicionaItemNaLista() {
+  async function createTask() {
     if (inputState === '') return;
-    setTarefasState([...tarefasState, { id: generateId(), titulo: inputState, detalhes: '', realizada: false }]);
+    const taskToAdd = { title: inputState, description: '', status: 'to_do' };
+
+    const response = await TaskService.create(taskToAdd);
+    const createdTask = response.data;
+
+    setTasks([...tasks, createdTask]);
     setInputState('');
   }
 
@@ -24,7 +27,7 @@ export default function TaskForm({ setTarefasState, tarefasState }) {
       <h4 className='form-title'>Tasks</h4>
       <div className='form-wrapper'>
         <input type='text' value={inputState} onChange={onInputChange} />
-        <button onClick={adicionaItemNaLista}>
+        <button onClick={createTask}>
           <strong>Adicionar</strong>
         </button>
       </div>

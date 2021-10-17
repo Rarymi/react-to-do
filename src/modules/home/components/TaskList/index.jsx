@@ -1,32 +1,38 @@
 import { TaskListContainer } from './style';
+import TaskListItem from '../TaskListItem';
+import TaskService from 'modules/home/services/TaskService';
+import { TasksContext } from 'modules/shared/contexts/TasksContext';
+import { useContext } from 'react';
+import { FilterContext } from 'modules/shared/contexts/FilterContext';
+export default function TaskList() {
+  const { tasks, setTasks } = useContext(TasksContext);
+  const { filter } = useContext(FilterContext);
+  async function changeTaskStatus(taskReceived, status) {
+    const currentTasks = [...tasks];
 
-export default function TaskList({ tarefasState, setTarefasState }) {
-  function alteraEstadoDaTarefa(tarefa) {
-    const newArray = [...tarefasState];
+    const foundIndex = currentTasks.findIndex((task) => taskReceived.id === task.id);
 
-    const foundIndex = newArray.findIndex((task) => tarefa.id === task.id);
-
-    newArray[foundIndex] = {
-      ...newArray[foundIndex],
-      realizada: !tarefa.realizada,
+    currentTasks[foundIndex] = {
+      ...currentTasks[foundIndex],
+      status,
     };
 
-    setTarefasState(newArray);
+    await TaskService.update(currentTasks[foundIndex]);
+
+    setTasks(tasks);
   }
 
   return (
     <TaskListContainer>
-      {tarefasState.map((tarefa) => (
-        <div>
-          <h1
-            onClick={() => alteraEstadoDaTarefa(tarefa)}
-            style={{ borderLeft: tarefa.realizada ? '6px solid  red' : '' }}
-          >
-            {tarefa.titulo}
-            {JSON.stringify(tarefa)}
-          </h1>
-        </div>
-      ))}
+      <ul>
+        {tasks.map((task) =>
+          filter !== '' ? (
+            task.status === filter && <TaskListItem key={task.id} task={task} changeTaskStatus={changeTaskStatus} />
+          ) : (
+            <TaskListItem key={task.id} task={task} changeTaskStatus={changeTaskStatus} />
+          )
+        )}
+      </ul>
     </TaskListContainer>
   );
 }
