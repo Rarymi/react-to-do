@@ -7,19 +7,35 @@ import { FilterContext } from 'modules/shared/contexts/FilterContext';
 export default function TaskList() {
   const { tasks, setTasks } = useContext(TasksContext);
   const { filter } = useContext(FilterContext);
+
+  /**
+   *
+   * @param {object} taskReceived tarefa a ser alterada
+   * @param {status} status status a ser aplicado na tarefa
+   */
   async function changeTaskStatus(taskReceived, status) {
+    /* cria a cópia da lista de tarefas, pois não podemos alterar
+      diretamente a lista, pois ela é um estado (useState)
+    */
     const currentTasks = [...tasks];
 
-    const foundIndex = currentTasks.findIndex((task) => taskReceived.id === task.id);
+    //Procura pelo índice do elemento que estamos procurando (taskReceived)
+    const foundIndex = currentTasks.findIndex((task) => {
+      return taskReceived.id === task.id;
+    });
 
+    // Altera o elemento da lista cuja posição é a mesma do índice encontrado na
+    //linha 19
     currentTasks[foundIndex] = {
       ...currentTasks[foundIndex],
       status,
     };
 
+    //Atualiza o elemento encontrado no banco
     await TaskService.update(currentTasks[foundIndex]);
 
-    setTasks(tasks);
+    //Altera o estado da lista atual com a lista com o elemento atualizado
+    setTasks(currentTasks);
   }
 
   return (

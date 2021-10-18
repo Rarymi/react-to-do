@@ -5,15 +5,11 @@ import { ConcludedContainer, ToDoContainer, ProgressContainer, SidebarContainer 
 export default function Sidebar() {
   const { setFilter } = useContext(FilterContext);
 
-  function changeFilter(filter) {
-    setFilter(filter);
-  }
-
   return (
     <SidebarContainer>
-      <ToDoContainer onClick={() => changeFilter('to_do')}>To Do</ToDoContainer>
-      <ProgressContainer onClick={() => changeFilter('in_progress')}>In Progress</ProgressContainer>
-      <ConcludedContainer onClick={() => changeFilter('concluded')}>Concluded</ConcludedContainer>
+      <ToDoContainer onClick={() => setFilter('to_do')}>To Do</ToDoContainer>
+      <ProgressContainer onClick={() => setFilter('in_progress')}>In Progress</ProgressContainer>
+      <ConcludedContainer onClick={() => setFilter('concluded')}>Concluded</ConcludedContainer>
     </SidebarContainer>
   );
 }

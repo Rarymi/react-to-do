@@ -7,10 +7,10 @@ export default function TasksProvider({ children }) {
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState({});
 
+  //Popula lista de tarefas
   useEffect(() => {
     TaskService.getAll().then((response) => {
-      const tasks = response.data;
-      setTasks(tasks);
+      setTasks(response.data);
     });
   }, [setTasks]);
 

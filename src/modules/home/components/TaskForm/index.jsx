@@ -24,9 +24,17 @@ export default function TaskForm() {
 
   return (
     <TaskFormContainer>
-      <h4 className='form-title'>Tasks</h4>
+      <h4 style={{ fontSize: '45px' }} className='form-title'>
+        Tasks
+      </h4>
       <div className='form-wrapper'>
-        <input type='text' value={inputState} onChange={onInputChange} />
+        <input
+          style={{ fontSize: '22px', color: 'var(--base-color-300)', fontWeight: 'bold' }}
+          placeholder='Digite sua nova tarefa...'
+          type='text'
+          value={inputState}
+          onChange={onInputChange}
+        />
         <button onClick={createTask}>
           <strong>Adicionar</strong>
         </button>

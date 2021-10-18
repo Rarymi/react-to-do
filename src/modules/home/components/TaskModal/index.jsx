@@ -1,11 +1,12 @@
 import { CloseIcon, ModalDetails, SaveIcon, TaskModalContainer } from './style';
-import { AiFillCloseSquare } from 'react-icons/ai';
-import { AiFillCheckSquare } from 'react-icons/ai';
+import { AiFillCloseCircle } from 'react-icons/ai';
+import { AiFillCheckCircle } from 'react-icons/ai';
 import { useContext, useState } from 'react';
 import { TasksContext } from 'modules/shared/contexts/TasksContext';
 import TaskService from 'modules/home/services/TaskService';
 export default function TaskModal() {
   const { selectedTask, setSelectedTask, fetchTasks } = useContext(TasksContext);
+
   const [title, setTitle] = useState(selectedTask.title);
   const [description, setDescription] = useState(selectedTask.description);
   const [taskStatus, setTaskStatus] = useState(selectedTask.status);
@@ -37,12 +38,19 @@ export default function TaskModal() {
     <TaskModalContainer>
       <ModalDetails>
         <CloseIcon onClick={() => setSelectedTask({})}>
-          <AiFillCloseSquare />
+          <AiFillCloseCircle />
         </CloseIcon>
         <input
           value={title}
           onChange={onTitleChange}
-          style={{ backgroundColor: '#e3dded', borderRadius: '4px', height: '23px' }}
+          style={{
+            backgroundColor: '#e3dded',
+            borderRadius: '4px',
+            height: '30px',
+            fontSize: '25px',
+            color: 'var(--base-color-300)',
+            fontWeight: 'bold',
+          }}
           type='text'
         />
         <textarea
@@ -60,7 +68,7 @@ export default function TaskModal() {
           <option value='concluded'>Concluded</option>
         </select>
         <SaveIcon onClick={onSaveButtonClick}>
-          <AiFillCheckSquare />
+          <AiFillCheckCircle />
         </SaveIcon>
       </ModalDetails>
     </TaskModalContainer>

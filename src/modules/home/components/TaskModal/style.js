@@ -34,13 +34,18 @@ export const ModalDetails = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 20px;
+    color: #140224;
+    font-family: Georgia, 'Times New Roman', Times, serif;
   }
 
   #select {
     border: solid 2px var(--base-color-200);
     border-radius: 4px;
-    width: 10%;
+    width: 15%;
     display: flex;
+    font-weight: bold;
+    font-size: 17px;
 
     option {
       background-color: var(--primary-150);
