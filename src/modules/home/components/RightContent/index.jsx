@@ -1,10 +1,12 @@
-import Presentation from 'assets/gifs/presentation.gif';
+import Complet from '../../../../assets/images/complet.svg';
+import React from '../../../../assets/gifs/react.gif';
 import { RightContainer } from './style';
 
 export default function RightContent() {
   return (
     <RightContainer>
-      <img src={Presentation} alt='presentation-gif' />
+      <img className='gif-react' src={React} alt='presentation-gif' />
+      <img src={Complet} alt='presentation-gif' />
     </RightContainer>
   );
 }

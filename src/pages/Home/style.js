@@ -12,5 +12,5 @@ export const HomeContainer = styled.main`
   gap: 20px;
   grid-column: 2/15;
   height: 100%;
-  background-color: blue;
+  background-color: var(--primary-100);
 `;
