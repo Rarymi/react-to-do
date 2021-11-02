@@ -23,14 +23,17 @@ export const ToDoContainer = styled.div`
   text-align: center;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  cursor: pointer;
 `;
 export const ProgressContainer = styled.div`
   background-color: var(--base-color-200);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  cursor: pointer;
 `;
 export const ConcludedContainer = styled.div`
   background-color: var(--base-color-300);
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
+  cursor: pointer;
 `;
